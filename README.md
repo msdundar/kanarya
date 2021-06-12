@@ -46,7 +46,7 @@ lambda_package := kanarya.LambdaPackage{
     Name: "YOUR_LAMBDA_NAME",
   },
   Bucket: kanarya.LambdaBucket{
-    Name: *aws_bucket,
+    Name: "YOUR_BUCKET_NAME",
     Key:  "upload/folder/in/s3bucket/index.zip",
   },
   Alias: kanarya.LambdaAlias{
