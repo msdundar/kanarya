@@ -1,5 +1,9 @@
 # Kanarya
 
+![Supported Version](https://img.shields.io/badge/go%20version-%3E%3D1.14-turquoise?style=flat-square)
+[![Go Report Card](https://goreportcard.com/badge/github.com/msdundar/kanarya)](https://goreportcard.com/report/github.com/msdundar/kanarya)
+![GitHub](https://img.shields.io/github/license/msdundar/kanarya?style=flat-square)(/LICENSE)
+
 > Kanarya is _canary_ in Turkish.
 
 `kanarya` is a Go module that takes care of canary deployments in AWS Lambda.
@@ -12,7 +16,7 @@ tool, or can be used on CI, depending on your needs.
 
 ## Install
 
-![logo](https://raw.githubusercontent.com/msdundar/kanarya/main/assets/logo_256.png)
+![logo](https://raw.githubusercontent.com/msdundar/kanarya/main/assets/logo_256.png?raw=true)
 
 ```sh
 go get github.com/msdundar/kanarya
@@ -121,7 +125,7 @@ _, err := kanarya.FullRollOut(lambdaClient, lambdaPackage, newVersion)
 And that's it! You can combine the example above for cross-regional deployments,
 by updating the `s3Client` or `lambdaClient` on the fly with a new region.
 
-## Contibutions
+## Contributions
 
 1. Fork the repo
 2. Clone the fork (`git clone git@github.com:YOUR_USERNAME/kanarya.git && cd kanarya`)
