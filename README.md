@@ -2,17 +2,15 @@
 
 ![Supported Version](https://img.shields.io/badge/go%20version-%3E%3D1.14-turquoise?style=flat-square)
 [![Go Report Card](https://goreportcard.com/badge/github.com/msdundar/kanarya)](https://goreportcard.com/report/github.com/msdundar/kanarya)
-![GitHub](https://img.shields.io/github/license/msdundar/kanarya?style=flat-square)(/LICENSE)
+![GitHub](https://img.shields.io/github/license/msdundar/kanarya?style=flat-square)
 
 > Kanarya is _canary_ in Turkish.
 
 `kanarya` is a Go module that takes care of canary deployments in AWS Lambda.
-
 This module acts as a wrapper on top of AWS Go SDK and makes easier to
-implement canary deployments in your lambda projects.
-
-`kanarya` can be used locally in your Go projects, can be implemented as a CLI
-tool, or can be used on CI, depending on your needs.
+implement canary deployments in your lambda projects. `kanarya` can be used
+locally in your Go projects, can be implemented as a CLI tool, or can be used
+on CI, depending on your needs.
 
 ## Install
 
@@ -137,4 +135,4 @@ by updating the `s3Client` or `lambdaClient` on the fly with a new region.
 
 ## License
 
-See [MIT-LICENSE](https://github.com/msdundar/kanarya/blob/master/MIT-LICENSE).
+See [LICENSE](https://github.com/msdundar/kanarya/blob/master/LICENSE).
