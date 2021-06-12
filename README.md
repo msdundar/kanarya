@@ -7,6 +7,14 @@
 This module acts as a wrapper on top of AWS Go SDK and makes easier to
 implement canary deployments in your lambda projects.
 
+## Install
+
+```sh
+go get github.com/msdundar/kanarya
+```
+
+> `kanarya` uses Go Modules to manage dependencies.
+
 ## Usage
 
 ### Credentials
@@ -19,14 +27,6 @@ before using the package.
   credentials in `~/.aws/credentials` file.
 
 For more details follow official [AWS Guidelines](https://aws.github.io/aws-sdk-go-v2/docs/configuring-sdk/).
-
-### Install
-
-```sh
-go get github.com/msdundar/kanarya
-```
-
-> `kanarya` uses Go Modules to manage dependencies.
 
 ### Implementation
 
