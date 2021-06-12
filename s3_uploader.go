@@ -28,7 +28,11 @@ func UploadToS3(client *s3.S3, lambda_package LambdaPackage) (S3UploadResponse, 
 	fileInfo, _ := file.Stat()
 	var size int64 = fileInfo.Size()
 	buffer := make([]byte, size)
-	file.Read(buffer)
+	_, err = file.Read(buffer)
+
+	if err != nil {
+		return resp, err
+	}
 
 	result, err := client.PutObject(
 		&s3.PutObjectInput{

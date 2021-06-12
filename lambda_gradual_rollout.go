@@ -1,7 +1,6 @@
 package kanarya
 
 import (
-	"errors"
 	"fmt"
 	"math"
 	"time"
@@ -49,9 +48,7 @@ func GradualRollOut(
 
 			for _, v := range statusCodes {
 				if v != 200 {
-					return resp.CurrentVersion, errors.New(
-						fmt.Sprintf("Health check failed with %v", v),
-					)
+					return resp.CurrentVersion, fmt.Errorf("health check failed with %v", v)
 				}
 			}
 
