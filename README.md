@@ -7,6 +7,9 @@
 This module acts as a wrapper on top of AWS Go SDK and makes easier to
 implement canary deployments in your lambda projects.
 
+`kanarya` can be used locally in your Go projects, can be implemented as a CLI
+tool, or can be used on CI, depending on your needs.
+
 ## Install
 
 ```sh
@@ -33,14 +36,14 @@ For more details follow official [AWS Guidelines](https://aws.github.io/aws-sdk-
 Create S3 and Lambda instances to use in AWS operations:
 
 ```golang
-s3_client     = kanarya.S3Client("AWS_REGION_TO_DEPLOY")
-lambda_client = kanarya.LambdaClient("AWS_REGION_TO_DEPLOY")
+s3Client     = kanarya.S3Client("AWS_REGION_TO_DEPLOY")
+lambdaClient = kanarya.LambdaClient("AWS_REGION_TO_DEPLOY")
 ```
 
 Create a deployment package by using `kanarya.LambdaPackage` struct:
 
 ```golang
-lambda_package := kanarya.LambdaPackage{
+lambdaPackage := kanarya.LambdaPackage{
   Location: "file/path/for/lambda/package/index.zip",
   Function: kanarya.LambdaFunction{
     Name: "YOUR_LAMBDA_NAME",
@@ -58,35 +61,37 @@ lambda_package := kanarya.LambdaPackage{
 Upload deployment package to S3:
 
 ```golang
-_, err := kanarya.UploadToS3(s3_client, lambda_package)
+_, err := kanarya.UploadToS3(s3Client, lambdaPackage)
 ```
 
 Update function code located in `$LATEST`:
 
 ```golang
-_, err := kanarya.UpdateFunctionCode(lambda_client, lambda_package)
+_, err := kanarya.UpdateFunctionCode(lambdaClient, lambdaPackage)
 ```
 
 Publish a new version for shifting traffic later:
 
 ```golang
-resp, err := kanarya.PublishNewVersion(lambda_client, lambda_package)
+resp, err := kanarya.PublishNewVersion(lambdaClient, lambdaPackage)
 newVersion := resp.Version
 ```
 
-Create a JSON to use in health check requests:
+Create a JSON payload to use in health check requests:
 
 ```golang
 request := yourRequestStruct{Something: "some value"}
 payload, err := json.Marshal(request)
 ```
 
+> Adjust this JSON according to the expected request by your lambda.
+
 Start gradual deployment:
 
 ```golang
 oldVersion, err := kanarya.GradualRollOut(
-  lambda_client,
-  lambda_package,
+  lambdaClient,
+  lambdaPackage,
   newVersion,
   0.1000000, // roll out rate in each step. 0.1 equals to 10%.
   10, // number of health checks you would like to run on each step.
@@ -100,7 +105,7 @@ healthy version:
 
 ```golang
 if err != nil {
-  kanarya.FullRollOut(lambda_client, lambda_package, oldVersion)
+  kanarya.FullRollOut(lambdaClient, lambdaPackage, oldVersion)
   os.Exit(1)
 }
 ```
@@ -108,11 +113,11 @@ if err != nil {
 If gradual rollout is successful, then fully roll out the new version:
 
 ```golang
-_, err := kanarya.FullRollOut(lambda_client, lambda_package, newVersion)
+_, err := kanarya.FullRollOut(lambdaClient, lambdaPackage, newVersion)
 ```
 
 And that's it! You can combine the example above for cross-regional deployments,
-by updating the `s3_client` or `lambda_client` on the fly with a new region.
+by updating the `s3Client` or `lambdaClient` on the fly with a new region.
 
 ## Contibutions
 
