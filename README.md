@@ -22,11 +22,11 @@ For more details follow official [AWS Guidelines](https://aws.github.io/aws-sdk-
 
 ### Install
 
-`kanarya` uses Go Modules to manage dependencies.
-
 ```sh
 go get github.com/msdundar/kanarya
 ```
+
+> `kanarya` uses Go Modules to manage dependencies.
 
 ### Implementation
 
