@@ -12,6 +12,8 @@ tool, or can be used on CI, depending on your needs.
 
 ## Install
 
+![](https://raw.githubusercontent.com/msdundar/kanarya/master/assets/logo_256.png)
+
 ```sh
 go get github.com/msdundar/kanarya
 ```
