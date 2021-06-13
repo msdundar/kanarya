@@ -2,6 +2,8 @@ package kanarya
 
 import (
 	"fmt"
+	"io/ioutil"
+	"log"
 	"os"
 	"testing"
 
@@ -9,7 +11,10 @@ import (
 )
 
 func setup() {
+	log.SetOutput(ioutil.Discard)
+
 	err := godotenv.Load("test.env")
+
 	if err != nil {
 		fmt.Println("Failed to load godotenv!")
 		os.Exit(1)
