@@ -123,6 +123,12 @@ _, err := kanarya.FullRollOut(lambdaClient, lambdaPackage, newVersion)
 And that's it! You can combine the example above for cross-regional deployments,
 by updating the `s3Client` or `lambdaClient` on the fly with a new region.
 
+## Development
+
+- `golangci-lint` is integrated in the CI. Run `golangci-lint run` locally to
+  make sure no linting issues exist.
+- Run `go test` to run unit tests.
+
 ## Contributions
 
 1. Fork the repo
