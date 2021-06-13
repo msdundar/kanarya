@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+// TestPublishNewVersion publishes a new lambda version by calling
+// PublishNewVersion and tests the output.
 func TestPublishNewVersion(t *testing.T) {
 	lambdaClient := LambdaClient(os.Getenv("AWS_REGION"))
 

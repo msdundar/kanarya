@@ -5,6 +5,9 @@ import (
 	"github.com/aws/aws-sdk-go/service/lambda"
 )
 
+// LambdaUpdateAliasResponse is used to represent the response returned from
+// UpdateAlias. The main use case of this struct is to track traffic shifted
+// from one version to another.
 type LambdaUpdateAliasResponse struct {
 	AliasArn       string
 	AliasName      string
@@ -13,6 +16,10 @@ type LambdaUpdateAliasResponse struct {
 	CurrentWeight  float64
 }
 
+// UpdateAlias is used to shift traffic from one version to another. version
+// argument is the version to shift some traffic, and traffic argument
+// stands for the amount of traffic to be shifted. For example, 0.2 means 20%
+// traffic shift to the specified version.
 func UpdateAlias(
 	client *lambda.Lambda,
 	lambdaPackage LambdaPackage,

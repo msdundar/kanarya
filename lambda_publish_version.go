@@ -7,6 +7,9 @@ import (
 	"github.com/aws/aws-sdk-go/service/lambda"
 )
 
+// LambdaNewVersionResponse is used to represent the response returned from
+// PublishNewVersion. The main use case of this struct is to check version
+// number of the latest published version.
 type LambdaNewVersionResponse struct {
 	FunctionArn      string
 	LastModified     string
@@ -15,6 +18,10 @@ type LambdaNewVersionResponse struct {
 	Version          string
 }
 
+// PublishNewVersion publishes a new lambda version and returns a
+// LambdaNewVersionResponse. One of the most important fields in the response is
+// Version, that is the new published version and is used in later gradual
+// deployment steps.
 func PublishNewVersion(
 	client *lambda.Lambda,
 	lambdaPackage LambdaPackage,
