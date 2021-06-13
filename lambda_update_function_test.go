@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+// TestUpdateFunctionCode updates the function code of a lambda located on
+// $LATEST, and tests the output.
 func TestUpdateFunctionCode(t *testing.T) {
 	lambdaClient := LambdaClient(os.Getenv("AWS_REGION"))
 

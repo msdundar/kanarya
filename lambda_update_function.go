@@ -7,12 +7,16 @@ import (
 	"github.com/aws/aws-sdk-go/service/lambda"
 )
 
+// LambdaUpdateFunctionResponse is used to reflect the response returned from
+// UpdateFunctionCode function.
 type LambdaUpdateFunctionResponse struct {
 	FunctionArn      string
 	FunctionName     string
 	LastUpdateStatus string
 }
 
+// UpdateFunctionCode updates the function code of a lambda located on $LATEST.
+// In later stages, new versions can be created from the updated $LATEST.
 func UpdateFunctionCode(
 	client *lambda.Lambda,
 	lambdaPackage LambdaPackage,

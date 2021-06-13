@@ -20,7 +20,8 @@ on CI, depending on your needs.
 go get github.com/msdundar/kanarya
 ```
 
-> `kanarya` uses Go Modules to manage dependencies.
+> `kanarya` uses Go Modules to manage dependencies, and supports Go versions
+> `>=1.14.x`.
 
 ## Usage
 

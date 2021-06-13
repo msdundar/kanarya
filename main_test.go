@@ -10,6 +10,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
+// testLambdaPackage is a simple LambdaPackage instance that is used
+// across the test suite.
 var testLambdaPackage = LambdaPackage{
 	Location: "fixtures/index.zip",
 	Function: LambdaFunction{
@@ -24,6 +26,9 @@ var testLambdaPackage = LambdaPackage{
 	},
 }
 
+// setup runs as the first step when "go test" run. It configures the test suite
+// by loading environment variables defined for the test environment, and for
+// tools used for testing.
 func setup() {
 	log.SetOutput(ioutil.Discard)
 
@@ -35,6 +40,8 @@ func setup() {
 	}
 }
 
+// TestMain is a Go 1.14 feature. See https://golang.org/pkg/testing/#hdr-Main
+// for more details.
 func TestMain(m *testing.M) {
 	setup()
 	os.Exit(m.Run())

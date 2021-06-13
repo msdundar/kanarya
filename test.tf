@@ -1,5 +1,7 @@
 // Terraform configuration to use together with Localstack
-// Resources created in this section will only be used to run the test suite
+// Resources created in this section will only be used to run the test suite.
+// After starting the localstack, you can apply this Terraform config to create
+// a fully functional testing environment. See README.md for more details.
 provider "aws" {
   access_key                  = "mock_access_key"
   region                      = "us-east-1"
