@@ -10,6 +10,20 @@ import (
 	"github.com/joho/godotenv"
 )
 
+var testLambdaPackage = LambdaPackage{
+	Location: "fixtures/index.zip",
+	Function: LambdaFunction{
+		Name: "test-lambda",
+	},
+	Bucket: LambdaBucket{
+		Name: "test-bucket",
+		Key:  "test-lambda/1.0.0/index.zip",
+	},
+	Alias: LambdaAlias{
+		Name: "live", // alias used by clients
+	},
+}
+
 func setup() {
 	log.SetOutput(ioutil.Discard)
 

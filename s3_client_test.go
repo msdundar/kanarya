@@ -15,7 +15,7 @@ func TestS3Client(t *testing.T) {
 	expectedReturn := "*s3.S3"
 
 	if returnValStr != expectedReturn {
-		t.Fatalf("S3Client() should return %v but returned %v", expectedReturn, returnValStr)
+		t.Fatalf("S3Client should return %v but returned %v", expectedReturn, returnValStr)
 	}
 
 	field := reflect.TypeOf(*client).Field(0)
@@ -23,6 +23,6 @@ func TestS3Client(t *testing.T) {
 	expectedType := "*client.Client"
 
 	if fieldType != expectedType {
-		t.Fatalf("S3Client() should be a type of %v but returned %v", expectedType, fieldType)
+		t.Fatalf("S3Client should be a type of %v but returned %v", expectedType, fieldType)
 	}
 }

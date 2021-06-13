@@ -15,7 +15,7 @@ func TestLambdaClient(t *testing.T) {
 	expectedReturn := "*lambda.Lambda"
 
 	if returnValStr != expectedReturn {
-		t.Fatalf("LambdaClient() should return %v but returned %v", expectedReturn, returnValStr)
+		t.Fatalf("LambdaClient should return %v but returned %v", expectedReturn, returnValStr)
 	}
 
 	field := reflect.TypeOf(*client).Field(0)
@@ -23,6 +23,6 @@ func TestLambdaClient(t *testing.T) {
 	expectedType := "*client.Client"
 
 	if fieldType != expectedType {
-		t.Fatalf("LambdaClient() should be a type of %v but returned %v", expectedType, fieldType)
+		t.Fatalf("LambdaClient should be a type of %v but returned %v", expectedType, fieldType)
 	}
 }
