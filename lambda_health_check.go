@@ -16,7 +16,7 @@ type HealthCheckResponse struct {
 	Body       string `json:"body"`
 }
 
-// HealthChecks runs health checks on a given lambda version or alias. It can
+// HealthCheck runs health checks on a given lambda version or alias. It can
 // take a payload argument that be used to satisfy request body expectations
 // of a lambda.
 func HealthCheck(
