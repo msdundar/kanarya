@@ -21,6 +21,13 @@ resource "aws_s3_bucket" "test_bucket" {
   acl           = "public-read-write"
 }
 
+resource "aws_s3_bucket_object" "test_lambda" {
+  bucket = aws_s3_bucket.test_bucket.bucket
+  key    = "test-lambda/1.0.0/index.zip"
+  source = "fixtures/index.zip"
+  etag = filemd5("fixtures/index.zip")
+}
+
 data "aws_iam_policy_document" "test_lambda" {
   version = "2012-10-17"
 
@@ -61,7 +68,7 @@ resource "aws_lambda_function" "test_lambda" {
   timeout     = 5
 
   s3_bucket = aws_s3_bucket.test_bucket.bucket
-  s3_key    = "test-lambda/1.0.0/index.zip"
+  s3_key    = aws_s3_bucket_object.test_lambda.key
 
   role = aws_iam_role.test_lambda.arn
 }
