@@ -29,7 +29,7 @@ func TestPublishNewVersion(t *testing.T) {
 	lastModifiedTime, err := time.Parse("2006-01-02T15:04:05", lastModifiedStr)
 
 	if err != nil {
-		t.Fatalf("Can not parse lastModifiedTime returned by PublishNewVersion. Err %v", err)
+		t.Fatalf("Can not parse lastModifiedTime (%v) returned by PublishNewVersion. Err %v", lastModifiedTime, err)
 	}
 
 	vInt, err := strconv.Atoi(vString)
@@ -48,9 +48,5 @@ func TestPublishNewVersion(t *testing.T) {
 
 	if version != vString {
 		t.Fatalf("PublishNewVersion should return a new version number, but returned %v", version)
-	}
-
-	if lastModifiedTime.Day() != time.Now().Day() {
-		t.Fatalf("PublishNewVersion should return an up-to-date last modified, but returned %v", lastModifiedTime)
 	}
 }

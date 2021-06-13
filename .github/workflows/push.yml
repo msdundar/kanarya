@@ -39,4 +39,4 @@ jobs:
       - name: Terraform apply
         run: terraform apply -auto-approve
       - name: Run test suite
-        run: go test
+        run: go test ./...

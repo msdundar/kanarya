@@ -14,8 +14,6 @@ on CI, depending on your needs.
 
 ## Install
 
-![logo](https://raw.githubusercontent.com/msdundar/kanarya/main/assets/logo_256.png?raw=true)
-
 ```sh
 go get github.com/msdundar/kanarya
 ```
