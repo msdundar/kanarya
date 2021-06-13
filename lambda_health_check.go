@@ -8,7 +8,7 @@ import (
 )
 
 // A HealthCheckResponse is used to reflect structure of a health check call
-// targetting a lambda function. StatusCode stands for the HTTP status code
+// targeting a lambda function. StatusCode stands for the HTTP status code
 // returned by AWS. On the other hand, there can be an additional status code
 // returned by applications in the response body, but this is optional.
 type HealthCheckResponse struct {

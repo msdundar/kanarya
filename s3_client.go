@@ -14,10 +14,10 @@ import (
 // S3ForcePathStyle is set to true, however, on production it will be set
 // to false.
 func S3Client(region string) *s3.S3 {
-	path_style := false
+	pathStyle := false
 
 	if os.Getenv("CI") == "true" {
-		path_style = true
+		pathStyle = true
 	}
 
 	return s3.New(
@@ -27,7 +27,7 @@ func S3Client(region string) *s3.S3 {
 		&aws.Config{
 			Region:           aws.String(region),
 			Endpoint:         aws.String(os.Getenv("AWS_S3_ENDPOINT")),
-			S3ForcePathStyle: aws.Bool(path_style),
+			S3ForcePathStyle: aws.Bool(pathStyle),
 		},
 	)
 }
