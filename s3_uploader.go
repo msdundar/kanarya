@@ -10,8 +10,7 @@ import (
 )
 
 type S3UploadResponse struct {
-	ETag      string
-	VersionID string
+	ETag string
 }
 
 func UploadToS3(client *s3.S3, lambdaPackage LambdaPackage) (S3UploadResponse, error) {
@@ -49,7 +48,6 @@ func UploadToS3(client *s3.S3, lambdaPackage LambdaPackage) (S3UploadResponse, e
 	log.Println("Lambda deployment package uploaded to S3...")
 
 	return S3UploadResponse{
-		ETag:      *result.ETag,
-		VersionID: *result.VersionId,
+		ETag: *result.ETag,
 	}, nil
 }
