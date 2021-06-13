@@ -9,6 +9,14 @@ import (
 	"github.com/aws/aws-sdk-go/service/lambda"
 )
 
+// GradualRollOut is the main function for gradual rollouts. It takes a version.
+// argument that refers to the new version that traffic is going to be shifted
+// for. traffic stands for the amount of traffic to be shifted on each step. For
+// example, 0.05 stands for 5%, and 20 steps is going to be required for a full
+// rollout (100/5=20). runs argument stands for number of health checks you
+// would like to run on each step. sleep is number of seconds to sleep on each
+// step. And finally, payload can be used as a request body to send when running
+// health checks.
 func GradualRollOut(
 	client *lambda.Lambda,
 	lambdaPackage LambdaPackage,

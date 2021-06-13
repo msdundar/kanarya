@@ -5,6 +5,8 @@ import (
 	"github.com/aws/aws-sdk-go/service/lambda"
 )
 
+// FullRollOut resets the routing config and shifts whole traffic from the
+// new version to the alias. It returns a LambdaUpdateAliasResponse struct.
 func FullRollOut(
 	client *lambda.Lambda,
 	lambdaPackage LambdaPackage,
