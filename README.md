@@ -125,9 +125,19 @@ by updating the `s3Client` or `lambdaClient` on the fly with a new region.
 
 ## Development
 
+### Local testing
+
+- Test environment can be set up with Terraform and Docker Compose. Configuration
+  for each can be found in the repository.
+- First, run `docker-compose up` to start [localstack](https://github.com/localstack/localstack).
+- Then run `terraform init` & `terraform apply` to create resources locally on
+  localstack.
+- Finally, run `go test` to run unit tests.
+
+### Linter
+
 - `golangci-lint` is integrated in the CI. Run `golangci-lint run` locally to
   make sure no linting issues exist.
-- Run `go test` to run unit tests.
 
 ## Contributions
 
