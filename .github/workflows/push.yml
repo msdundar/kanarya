@@ -31,5 +31,18 @@ jobs:
 
           # Optional: if set to true then the action don't cache or restore ~/.cache/go-build.
           # skip-build-cache: true
+      - name: Prepare test environment
+        run: |
+          docker-compose up -d
+      - uses: hashicorp/setup-terraform@v1
+      - name: Terraform init
+        id: init
+        run: terraform init
+      - name: Terraform plan
+        id: plan
+        run: terraform plan -no-color
+        continue-on-error: true
+      - name: Terraform apply
+        run: terraform apply -auto-approve
       - name: Run test suite
         run: go test
