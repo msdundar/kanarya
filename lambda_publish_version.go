@@ -1,7 +1,7 @@
 package kanarya
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/lambda"
@@ -17,13 +17,13 @@ type LambdaNewVersionResponse struct {
 
 func PublishNewVersion(
 	client *lambda.Lambda,
-	lambda_package LambdaPackage,
+	lambdaPackage LambdaPackage,
 ) (LambdaNewVersionResponse, error) {
 	resp := LambdaNewVersionResponse{}
 
 	result, err := client.PublishVersion(
 		&lambda.PublishVersionInput{
-			FunctionName: aws.String(lambda_package.Function.Name),
+			FunctionName: aws.String(lambdaPackage.Function.Name),
 		},
 	)
 
@@ -31,7 +31,7 @@ func PublishNewVersion(
 		return resp, err
 	}
 
-	fmt.Println("Lambda version published...")
+	log.Println("Lambda version published...")
 
 	return LambdaNewVersionResponse{
 		FunctionArn:      *result.FunctionArn,

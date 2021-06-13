@@ -2,6 +2,7 @@ package kanarya
 
 import (
 	"fmt"
+	"log"
 	"math"
 	"time"
 
@@ -10,7 +11,7 @@ import (
 
 func GradualRollOut(
 	client *lambda.Lambda,
-	lambda_package LambdaPackage,
+	lambdaPackage LambdaPackage,
 	version string,
 	traffic float64,
 	runs int,
@@ -23,7 +24,7 @@ func GradualRollOut(
 
 		resp, err := UpdateAlias(
 			client,
-			lambda_package,
+			lambdaPackage,
 			version,
 			sRate,
 		)
@@ -32,7 +33,7 @@ func GradualRollOut(
 			return resp.CurrentVersion, err
 		}
 
-		fmt.Printf(
+		log.Printf(
 			"Alias updated. Old version: %v, new version %v, roll out rate %v\n",
 			resp.CurrentVersion,
 			version,
@@ -40,7 +41,7 @@ func GradualRollOut(
 		)
 
 		for i := 0; i < runs; i++ {
-			statusCodes, err := HealthCheck(client, lambda_package, version, payload)
+			statusCodes, err := HealthCheck(client, lambdaPackage, version, payload)
 
 			if err != nil {
 				return resp.CurrentVersion, err
@@ -52,7 +53,7 @@ func GradualRollOut(
 				}
 			}
 
-			fmt.Println("Health checks are successful...")
+			log.Println("Health checks are successful...")
 		}
 
 		time.Sleep(sleep * time.Second)

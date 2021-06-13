@@ -15,7 +15,7 @@ type LambdaUpdateAliasResponse struct {
 
 func UpdateAlias(
 	client *lambda.Lambda,
-	lambda_package LambdaPackage,
+	lambdaPackage LambdaPackage,
 	version string,
 	traffic float64,
 ) (LambdaUpdateAliasResponse, error) {
@@ -23,8 +23,8 @@ func UpdateAlias(
 
 	result, err := client.UpdateAlias(
 		&lambda.UpdateAliasInput{
-			FunctionName: aws.String(lambda_package.Function.Name),
-			Name:         aws.String(lambda_package.Alias.Name),
+			FunctionName: aws.String(lambdaPackage.Function.Name),
+			Name:         aws.String(lambdaPackage.Alias.Name),
 			RoutingConfig: &lambda.AliasRoutingConfiguration{
 				AdditionalVersionWeights: map[string]*float64{
 					version: aws.Float64(traffic),

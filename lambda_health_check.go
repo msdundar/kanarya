@@ -14,7 +14,7 @@ type HealthCheckResponse struct {
 
 func HealthCheck(
 	client *lambda.Lambda,
-	lambda_package LambdaPackage,
+	lambdaPackage LambdaPackage,
 	version string,
 	payload []byte,
 ) ([]int64, error) {
@@ -22,7 +22,7 @@ func HealthCheck(
 	var response HealthCheckResponse
 
 	result, err := client.Invoke(&lambda.InvokeInput{
-		FunctionName: aws.String(lambda_package.Function.Name),
+		FunctionName: aws.String(lambdaPackage.Function.Name),
 		Payload:      payload,
 		Qualifier:    aws.String(version),
 	})

@@ -2,7 +2,7 @@ package kanarya
 
 import (
 	"bytes"
-	"fmt"
+	"log"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -14,10 +14,10 @@ type S3UploadResponse struct {
 	VersionID string
 }
 
-func UploadToS3(client *s3.S3, lambda_package LambdaPackage) (S3UploadResponse, error) {
+func UploadToS3(client *s3.S3, lambdaPackage LambdaPackage) (S3UploadResponse, error) {
 	resp := S3UploadResponse{}
 
-	file, err := os.Open(lambda_package.Location)
+	file, err := os.Open(lambdaPackage.Location)
 
 	if err != nil {
 		return resp, err
@@ -37,8 +37,8 @@ func UploadToS3(client *s3.S3, lambda_package LambdaPackage) (S3UploadResponse, 
 	result, err := client.PutObject(
 		&s3.PutObjectInput{
 			Body:   aws.ReadSeekCloser(bytes.NewReader(buffer)),
-			Bucket: aws.String(lambda_package.Bucket.Name),
-			Key:    aws.String(lambda_package.Bucket.Key),
+			Bucket: aws.String(lambdaPackage.Bucket.Name),
+			Key:    aws.String(lambdaPackage.Bucket.Key),
 		},
 	)
 
@@ -46,7 +46,7 @@ func UploadToS3(client *s3.S3, lambda_package LambdaPackage) (S3UploadResponse, 
 		return resp, err
 	}
 
-	fmt.Println("Lambda deployment package uploaded to S3...")
+	log.Println("Lambda deployment package uploaded to S3...")
 
 	return S3UploadResponse{
 		ETag:      *result.ETag,

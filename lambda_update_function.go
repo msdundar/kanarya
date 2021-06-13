@@ -1,7 +1,7 @@
 package kanarya
 
 import (
-	"fmt"
+	"log"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/service/lambda"
@@ -15,15 +15,15 @@ type LambdaUpdateFunctionResponse struct {
 
 func UpdateFunctionCode(
 	client *lambda.Lambda,
-	lambda_package LambdaPackage,
+	lambdaPackage LambdaPackage,
 ) (LambdaUpdateFunctionResponse, error) {
 	resp := LambdaUpdateFunctionResponse{}
 
 	result, err := client.UpdateFunctionCode(
 		&lambda.UpdateFunctionCodeInput{
-			FunctionName: aws.String(lambda_package.Function.Name),
-			S3Bucket:     aws.String(lambda_package.Bucket.Name),
-			S3Key:        aws.String(lambda_package.Bucket.Key),
+			FunctionName: aws.String(lambdaPackage.Function.Name),
+			S3Bucket:     aws.String(lambdaPackage.Bucket.Name),
+			S3Key:        aws.String(lambdaPackage.Bucket.Key),
 		},
 	)
 
@@ -31,7 +31,7 @@ func UpdateFunctionCode(
 		return resp, err
 	}
 
-	fmt.Println("Lambda function code updated...")
+	log.Println("Lambda function code updated...")
 
 	return LambdaUpdateFunctionResponse{
 		FunctionArn:      *result.FunctionArn,

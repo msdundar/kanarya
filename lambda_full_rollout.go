@@ -7,13 +7,13 @@ import (
 
 func FullRollOut(
 	client *lambda.Lambda,
-	lambda_package LambdaPackage,
+	lambdaPackage LambdaPackage,
 	version string,
 ) (LambdaUpdateAliasResponse, error) {
 	result, err := client.UpdateAlias(
 		&lambda.UpdateAliasInput{
-			FunctionName:    aws.String(lambda_package.Function.Name),
-			Name:            aws.String(lambda_package.Alias.Name),
+			FunctionName:    aws.String(lambdaPackage.Function.Name),
+			Name:            aws.String(lambdaPackage.Alias.Name),
 			FunctionVersion: aws.String(version),
 			RoutingConfig:   &lambda.AliasRoutingConfiguration{},
 		},
