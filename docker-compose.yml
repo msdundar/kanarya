@@ -6,8 +6,6 @@ services:
     image: localstack/localstack
     network_mode: bridge
     ports:
-      - "53:53"
-      - "53:53/udp"
       - "443:443"
       - "4566:4566"
       - "4571:4571"
