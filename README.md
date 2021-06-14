@@ -87,7 +87,7 @@ request := yourRequestStruct{Something: "some value"}
 payload, err := json.Marshal(request)
 ```
 
-> Adjust this JSON according to the expected request by your lambda.
+> Adjust this JSON according to the request-body expectations of your lambda.
 
 Start gradual deployment:
 
