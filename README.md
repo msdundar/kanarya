@@ -39,8 +39,8 @@ For more details follow official [AWS Guidelines](https://aws.github.io/aws-sdk-
 Create S3 and Lambda instances to use in AWS operations:
 
 ```golang
-s3Client     = kanarya.S3Client("AWS_REGION_TO_DEPLOY")
-lambdaClient = kanarya.LambdaClient("AWS_REGION_TO_DEPLOY")
+s3Client     := kanarya.S3Client("AWS_REGION_TO_DEPLOY")
+lambdaClient := kanarya.LambdaClient("AWS_REGION_TO_DEPLOY")
 ```
 
 Create a deployment package by using `kanarya.LambdaPackage` struct:
