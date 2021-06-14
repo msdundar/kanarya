@@ -1,4 +1,4 @@
-module kanarya
+module github.com/msdundar/kanarya
 
 go 1.16
 
