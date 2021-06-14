@@ -9,7 +9,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/lambda"
 )
 
-// GradualRollOut is the main function for gradual rollouts. It takes a version.
+// GradualRollOut is the main function for gradual rollouts. It takes a version
 // argument that refers to the new version that traffic is going to be shifted
 // for. traffic stands for the amount of traffic to be shifted on each step. For
 // example, 0.05 stands for 5%, and 20 steps is going to be required for a full
