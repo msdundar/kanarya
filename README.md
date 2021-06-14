@@ -1,5 +1,6 @@
 # Kanarya
 
+[![GoDoc](https://godoc.org/github.com/msdundar/kanarya?status.svg)](https://godoc.org/github.com/msdundar/kanarya)
 ![Supported Version](https://img.shields.io/badge/go%20version-%3E%3D1.14-turquoise)
 [![Go Report Card](https://img.shields.io/badge/go%20report-A+-brightgreen.svg?style=flat)](https://goreportcard.com/report/github.com/msdundar/kanarya)
 ![GitHub](https://img.shields.io/github/license/msdundar/kanarya)
