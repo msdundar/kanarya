@@ -4,7 +4,7 @@
 ![Supported Version](https://img.shields.io/badge/go%20version-%3E%3D1.14-turquoise)
 [![Go Report Card](https://img.shields.io/badge/go%20report-A+-brightgreen.svg?style=flat)](https://goreportcard.com/report/github.com/msdundar/kanarya)
 [![Maintainability](https://api.codeclimate.com/v1/badges/0bffcd4152f20492410c/maintainability)](https://codeclimate.com/github/msdundar/kanarya/maintainability)
-![GitHub](https://img.shields.io/github/license/msdundar/kanarya)
+[![License](https://img.shields.io/github/license/msdundar/kanarya)](https://github.com/msdundar/kanarya/blob/main/LICENSE)
 
 > Kanarya is _canary_ in Turkish.
 
