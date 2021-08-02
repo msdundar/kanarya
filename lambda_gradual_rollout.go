@@ -26,7 +26,6 @@ func GradualRollOut(
 	sleep time.Duration,
 	payload []byte,
 ) (string, error) {
-
 	for rate := traffic; rate <= 1.0; rate += traffic {
 		sRate := math.Round(rate*100) / 100
 
@@ -68,5 +67,4 @@ func GradualRollOut(
 	}
 
 	return "", nil
-
 }

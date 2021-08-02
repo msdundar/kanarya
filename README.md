@@ -19,7 +19,7 @@ on CI, depending on your needs.
 ## Install
 
 ```sh
-go get github.com/msdundar/kanarya@v1.1.3
+go get github.com/msdundar/kanarya@v1.1.5
 ```
 
 > `kanarya` uses Go Modules to manage dependencies, and supports Go versions
