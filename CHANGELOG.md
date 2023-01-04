@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.8] - 2023-01-04
+
+- Test against new Go versions; 1.17.x, 1.18.x and 1.19.x
+
 ## [1.1.7] - 2023-01-04
 
 Updated aws-sdk-go.
