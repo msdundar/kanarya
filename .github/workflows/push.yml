@@ -28,7 +28,7 @@ jobs:
       - name: Prepare test environment
         run: |
           docker-compose up -d
-      - uses: hashicorp/setup-terraform@v2
+      - uses: hashicorp/setup-terraform@v3
       - name: Terraform init
         id: init
         run: terraform init
