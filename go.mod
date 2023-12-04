@@ -3,6 +3,6 @@ module github.com/msdundar/kanarya
 go 1.16
 
 require (
-	github.com/aws/aws-sdk-go v1.48.10
+	github.com/aws/aws-sdk-go v1.48.11
 	github.com/joho/godotenv v1.5.1
 )
